@@ -46,9 +46,9 @@ public class AccountPointTest {
 	@MockBean
 	private RestTemplate restTemplate;
 
-	private static final Account acc1 = new Account(1, "abc123456", "Josh", "brooks", "jjb@qa.com");
+	private static final Account acc1 = new Account(1, "abc123456", "Josh", "brooks", "jjb@qa.com", "prize");
 	private static final String acc1_ob = "{\"aId\":1,\"accNo\":\"abc123456\",\"firstName\":\"Josh\",\"lastName\":\"brooks\",\"email\":\"jjb@qa.com\"}";
-	private static final Account acc2 = new Account(2, "def123456", "krystal", "ryan", "diddle@qa.com");
+	private static final Account acc2 = new Account(2, "def123456", "krystal", "ryan", "diddle@qa.com", "prize");
 	private static final String acc2_ob = "{\"aId\":2,\"accNo\":\"def123456\",\"firstName\":\"krystal\",\"lastName\":\"ryan\",\"email\":\"diddle@qa.com\"}";
 	private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 

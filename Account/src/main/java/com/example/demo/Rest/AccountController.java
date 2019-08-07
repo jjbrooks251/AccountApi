@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.jms.core.JmsTemplate;
 
 import com.example.demo.Entity.Account;
+import com.example.demo.Entity.SentAccount;
 import com.example.demo.service.AccountService;
 
 @RestController
@@ -28,9 +30,17 @@ public class AccountController {
 	private RestTemplate rest;
 	
 	@Autowired
+	private JmsTemplate jmsTemplate; 
+	
+	@Autowired
 	public AccountController( AccountService service) {
 		this.service = service;
 	}
+	
+	private void sendToQueue(Account account){
+        SentAccount accountToStore =  new SentAccount(account);
+        jmsTemplate.convertAndSend("AccountQueue", accountToStore);
+    }
 	
 	@GetMapping("/getAll")
 	public List<Account> getAllAccounts(){
@@ -49,7 +59,15 @@ public class AccountController {
 		
 		String accNo = lett + num;
 		
+		//String prize = rest.getForObject("http://localhost:8083/prize/get", String.class, "b345265");
+		
+		//rest.getFor
+		
 		account.setAccNo(accNo);
+		account.setPrize("No Prize");
+		
+		sendToQueue(account);
+		
 		
 		Account retVal = service.createAccount(account);
 		return new ResponseEntity<>(retVal, HttpStatus.CREATED);

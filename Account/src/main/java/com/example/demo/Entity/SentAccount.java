@@ -7,8 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Account {
-	
+public class SentAccount {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer aId;
@@ -23,11 +23,11 @@ public class Account {
 	@Column
 	private String prize;
 	
-	public Account() {
+	public SentAccount(Account account) {
 		super();
 	}
 	
-	public Account(Integer aId, String accNo, String firstName, String lastName, String email, String prize) {
+	public SentAccount(Integer aId, String accNo, String firstName, String lastName, String email, String prize) {
 		super();
 		this.aId = aId;
 		this.accNo = accNo;
@@ -92,8 +92,5 @@ public class Account {
 		return "Account [aId=" + aId + ", accNo=" + accNo + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", email=" + email + ", prize = " + prize +"]";
 	}
-	
-	
-	
 	
 }

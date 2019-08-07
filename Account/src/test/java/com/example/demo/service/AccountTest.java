@@ -26,8 +26,8 @@ public class AccountTest {
 	@Mock
 	private AccountRepository repo;
 	
-	private static final Account acc1 = new Account(1, "abc123456", "Josh", "brooks", "jjb@qa.com");
-	private static final Account acc2 = new Account(2, "def123456", "krystal", "ryan", "diddle@qa.com");
+	private static final Account acc1 = new Account(1, "abc123456", "Josh", "brooks", "jjb@qa.com", "prize");
+	private static final Account acc2 = new Account(2, "def123456", "krystal", "ryan", "diddle@qa.com", "prize");
 	
 	@Ignore
 	public void loadTest() {
